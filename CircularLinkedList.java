@@ -31,7 +31,6 @@ public class CircularLinkedList {
 	}
 
 	// O(1)
-
 	static Node insertAtBeginOne(Node head, int data) {
 		Node temp = new Node(data);
 
@@ -95,6 +94,32 @@ public class CircularLinkedList {
 		} while (curr != head);
 	}
 
+	static Node deleteBegin(Node head) {
+		Node curr = head;
+
+		if (head == null)
+			return null;
+
+		if (head.next == null)
+			return null;
+		head.data = head.next.data;
+		curr.next = curr.next.next;
+
+		return head;
+	}
+
+	static Node deleteKth(Node head, int k) {
+		if (head == null)
+			return head;
+		if (k == 1)
+			return deleteBegin(head);
+		Node curr = head;
+		for (int i = 0; i < k - 2; i++)
+			curr = curr.next;
+		curr.next = curr.next.next;
+		return head;
+	}
+
 	public static void main(String[] args) {
 
 		Node head = new Node(10);
@@ -114,6 +139,13 @@ public class CircularLinkedList {
 		// head = insertAtEnd(head,50);
 
 		head = insertAtEndOne(head, 50);
+
+		// delete begin node
+		// head = deleteBegin(head);
+
+		// deleteAtGivenPos
+
+		head = deleteKth(head, 1);
 
 		// traverse the list
 		printList(head);
