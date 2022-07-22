@@ -37,7 +37,7 @@ public class LinkedList {
 		}
 		curr.next = newNode;
 
-		return newNode;
+		return head;
 
 	}
 
@@ -153,7 +153,7 @@ public class LinkedList {
 		// 40 30 20 10
 
 		Node next;
-		Node prev=null;
+		Node prev = null;
 
 		if (head == null) {
 			return null;
@@ -214,7 +214,7 @@ public class LinkedList {
 		head = insertAtGivenPos(head, 4, 200);
 
 		// delete at given pos
-		 head = deleteAtGivenPos(head, 2);
+		head = deleteAtGivenPos(head, 2);
 
 		// reverseOfList
 		head = reverseofList(head);
