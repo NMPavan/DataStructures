@@ -84,7 +84,7 @@ public class DoubleLinkedList {
 		}
 
 		curr.prev.next = null;
-		curr.next = null;
+		curr.prev = null;
 
 		return head;
 
@@ -138,9 +138,9 @@ public class DoubleLinkedList {
 			current = current.prev;
 		}
 
-	//	if (temp != null) {
-			//head = temp.prev;
-	//	}
+		// if (temp != null) {
+		// head = temp.prev;
+		// }
 		return temp.prev;
 	}
 
@@ -155,6 +155,7 @@ public class DoubleLinkedList {
 		temp2.prev = temp1;
 
 		head = reversetheList(head);
+
 		// insertAtBegin
 		head = inserAtBegin(head, 5);
 
@@ -174,11 +175,8 @@ public class DoubleLinkedList {
 
 		// DeleteAtGivenPos
 		head = DeleteAtGivenPos(head, 3);
-		
 
 		printList(head);
-
-		
 
 	}
 
