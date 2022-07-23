@@ -129,6 +129,20 @@ public class LinkedlistProblems {
 		return prev;
 	}
 	
+	static Node recRevL(Node head){
+        if(head==null||head.next==null)
+        	return head;
+        
+        //1 2 3 4
+        //1 4 3 2
+        //  rh
+        Node rest_head=recRevL(head.next);
+        Node rest_tail=head.next;
+        rest_tail.next=head;
+        head.next=null;
+        return rest_head;
+    }
+	
 
 	static void printlist(Node head) {
 		Node curr = head;
@@ -163,7 +177,9 @@ public class LinkedlistProblems {
 		
 		head = reverseLinkedList(head);
 		
-		System.err.println("result=" + data3);
+		//head = recRevL(head);
+		
+		//System.err.println("result=" + data3);
 
 		printlist(head);
 	}
