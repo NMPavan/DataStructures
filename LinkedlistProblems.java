@@ -143,6 +143,20 @@ public class LinkedlistProblems {
         return rest_head;
     }
 	
+	
+	static void removeDuplicates(Node head) {
+		
+		Node curr = head;
+		
+		while(curr!=null && curr.next!=null) {
+			if(curr.data == curr.next.data) {
+				curr.next = curr.next.next;
+			}else {
+				curr = curr.next;	
+			}
+		}
+		
+	}
 
 	static void printlist(Node head) {
 		Node curr = head;
@@ -155,14 +169,22 @@ public class LinkedlistProblems {
 
 	public static void main(String[] args) {
 		Node head = new Node(10);
-		Node h1 = new Node(20);
-		Node h2 = new Node(30);
-		Node h3 = new Node(40);
+		Node h1 = new Node(10);
+		Node h2 = new Node(20);
+		Node h3 = new Node(20);
+		Node h4 = new Node(20);
+		Node h5 = new Node(20);
+		Node h6 = new Node(40);
 
 		head.next = h1;
 		h1.next = h2;
 		h2.next = h3;
-		h3.next = null;
+		h3.next = h4;
+		h4.next = h5;
+		h5.next = h6;
+		h6.next = null;
+		
+		removeDuplicates(head);
 
 		// insert a new node to sorted
 		head = insertNewNode(head, 5);
