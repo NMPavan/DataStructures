@@ -1,5 +1,5 @@
 package datastructures;
-
+import java.util.*;
 import datastructures.LinkedList.Node;
 
 public class LinkedlistProblems {
@@ -156,7 +156,50 @@ public class LinkedlistProblems {
 			}
 		}
 		
-	}
+	}	
+	
+	
+	static boolean polindrome(Node head)  {
+        
+		//find the mid
+        //mid+1 to end  just reverse the list
+        //keep the start node after reverse as h1
+        // traverse the list from start and compare each element with after mid+1 element
+        
+        Node slow= head,fast= head;
+        
+        // if(head == null || head.next==null){
+        //     return false;
+        // }
+        
+        while(fast.next!=null && fast.next.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        Node rev = reverseLinkedList(slow.next);
+        
+        slow = head;
+        
+        //1   2    2    1
+        //sf
+        //.   s.   f
+        //1   2.   1.    2      null
+        //s        rev
+        //.   s          rev
+        //.         s           rev
+        while(rev!=null){
+            if(rev.data!= slow.data){
+                return false;
+            }else{
+                slow= slow.next;
+                rev= rev.next;
+            }
+        }
+        
+        return true;
+    }  
+	
 
 	static void printlist(Node head) {
 		Node curr = head;
@@ -176,6 +219,7 @@ public class LinkedlistProblems {
 		Node h5 = new Node(20);
 		Node h6 = new Node(40);
 
+		
 		head.next = h1;
 		h1.next = h2;
 		h2.next = h3;
@@ -183,6 +227,8 @@ public class LinkedlistProblems {
 		h4.next = h5;
 		h5.next = h6;
 		h6.next = null;
+		
+		
 		
 		removeDuplicates(head);
 
@@ -201,7 +247,16 @@ public class LinkedlistProblems {
 		
 		//head = recRevL(head);
 		
+		
 		//System.err.println("result=" + data3);
+		
+		//remove duplicatesfrom sorted List;
+		
+		//polindrome or not
+		
+	        
+		//while executing please comment this line and do
+		polindrome(head);
 
 		printlist(head);
 	}
