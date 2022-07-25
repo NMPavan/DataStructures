@@ -161,7 +161,7 @@ public class LinkedlistProblems {
 	
 	static boolean polindrome(Node head)  {
         
-		//find the mid
+	//find the mid
         //mid+1 to end  just reverse the list
         //keep the start node after reverse as h1
         // traverse the list from start and compare each element with after mid+1 element
