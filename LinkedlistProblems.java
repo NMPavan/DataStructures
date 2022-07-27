@@ -2,6 +2,13 @@ package datastructures;
 import java.util.*;
 import datastructures.LinkedList.Node;
 
+//pending
+//Remove Nodes from unsorted linkedlist
+//Swap Kth nodes from ends
+//Merge Sort for Linked List
+//lru cache
+//merge two sorted linkedlists
+
 public class LinkedlistProblems {
 
 	static class Node {
