@@ -238,6 +238,37 @@ public class LinkedlistProblems {
 	          
 	    }
 	
+	 static Node rotateClock(Node head,int k) {
+		 Node slow = head, fast = head;
+		 Node curr = head;
+
+		 
+			for (int i = 0; i <k; i++) {
+				fast = fast.next;
+			}
+			// k= 2 move k to 2 times ahead in linkedlist
+			// 5 10 20 30 40
+			// s     f            1st iteration
+			//    s     f         2nd iteration
+			//       s     f      3rd iteration
+			
+			while (fast.next!= null) {
+				slow = slow.next;
+				fast = fast.next;
+			}
+			
+			Node kThNode = slow;
+			
+
+			fast.next = curr;
+			curr = slow.next;
+			slow.next = null;
+			
+			return  curr;
+			
+			
+			
+	 }
 
 	static void printlist(Node head) {
 		Node curr = head;
@@ -294,8 +325,10 @@ public class LinkedlistProblems {
 		polindrome(head);
 		
 		//rotate the linkedlist by kth times in anti clock wise
+		//head = rotateAnti(head, 1); 
 		
-		head = rotate(head, 1); 
+		//rotate the linkedlist by ktimes in clock wise
+		head = rotateClock(head,1);
 		printlist(head);
 	}
 
