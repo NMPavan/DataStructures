@@ -5,7 +5,7 @@ import datastructures.LinkedList.Node;
 //pending
 //Remove Nodes from unsorted linkedlist
 //Swap Kth nodes from ends
-//Merge Sort for Linked List
+//Merge two Sorted Linked List
 //lru cache
 //merge two sorted linkedlists
 
