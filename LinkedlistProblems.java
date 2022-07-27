@@ -161,7 +161,7 @@ public class LinkedlistProblems {
 	
 	static boolean polindrome(Node head)  {
         
-	//find the mid
+		//find the mid
         //mid+1 to end  just reverse the list
         //keep the start node after reverse as h1
         // traverse the list from start and compare each element with after mid+1 element
@@ -199,6 +199,44 @@ public class LinkedlistProblems {
         
         return true;
     }  
+	
+	 public static Node rotate(Node head, int k) {
+	        // add code here
+		 
+		 if(k<1)
+			 return head;
+	        
+	        Node curr = head;
+	        Node KthNode = head;
+	        
+	        //2    4     7       8         9
+	        //c,k
+	        //                                     ex: k= 3 k = 3-1 = 2 
+	        //                                       //move k-1 times right
+	        
+	        for(int i=1;i<k && curr!=null;i++){
+	            curr = curr.next;
+	        }
+	        
+	        if(curr== null){
+	            return null;
+	        }
+	        
+	        KthNode = curr;
+	        
+	        while(curr.next!=null){
+	            curr = curr.next;
+	        }
+	        
+	        curr.next = head;
+	        head = KthNode.next;
+	        KthNode.next = null;
+	        
+	      
+	      return head;
+	        
+	          
+	    }
 	
 
 	static void printlist(Node head) {
@@ -253,11 +291,11 @@ public class LinkedlistProblems {
 		//remove duplicatesfrom sorted List;
 		
 		//polindrome or not
-		
-	        
-		//while executing please comment this line and do
 		polindrome(head);
-
+		
+		//rotate the linkedlist by kth times in anti clock wise
+		
+		head = rotate(head, 1); 
 		printlist(head);
 	}
 
