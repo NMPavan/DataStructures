@@ -125,6 +125,49 @@ public class Stacks {
 		}
 	}
 
+	static void previousGreater(int arr[], int n) {
+		Stack<Integer> s1 = new Stack<Integer>();
+
+		s1.add(arr[0]);
+
+		for (int i = 0; i < n; i++) {
+			while (s1.isEmpty() == false && s1.peek() <= arr[i]) {
+				s1.pop();
+			}
+
+			int pg = s1.isEmpty() ? -1 : s1.peek();
+
+			System.out.print(pg + " ");
+			s1.add(arr[i]);
+		}
+
+	}
+
+	static ArrayList<Integer> nextGreaterElement(int arr[], int n) {
+		Stack<Integer> s2 = new Stack<Integer>();
+
+		ArrayList<Integer> a1 = new ArrayList<Integer>();
+
+		s2.add(arr[n - 1]);
+		a1.add(-1);
+
+		for (int i = n - 2; i >= 0; i--) {
+			while (s2.isEmpty() == false && s2.peek() <= arr[i]) {
+				s2.pop();
+			}
+
+			int ng = s2.isEmpty() ? -1 : s2.peek();
+			a1.add(ng);
+			s2.add(arr[i]);
+
+		}
+
+		Collections.reverse(a1);
+
+		return a1;
+
+	}
+
 	static boolean AknowsB(int M[][], int A, int B) {
 		if (M[A][B] == 1)
 			return true;
@@ -200,7 +243,6 @@ public class Stacks {
 		l1.push(30);
 		l1.push(25);
 		l1.pop();
-		// System.out.println(l1.peek() + l1.pop());
 
 		System.out.println(l1.size());
 
@@ -212,9 +254,21 @@ public class Stacks {
 			System.out.println("NO");
 		}
 
-		// stockspan problem
+		//stock span problem
 		int[] arr = new int[] { 18, 12, 13, 14, 11, 16 };
 		stockSpan(arr, arr.length);
+
+		System.out.println();
+
+		// previous Greater Problem
+		previousGreater(arr, arr.length);
+
+		System.out.println();
+
+		// Next greater Problem
+		int arr1[] = { 5, 15, 10, 8, 6, 12, 9, 18 };
+
+		System.out.println("next greater elements:= " + nextGreaterElement(arr1, arr1.length));
 
 		// celebrity probelm
 		int M[][] = { { 0, 1, 0 }, { 0, 0, 0 }, { 0, 1, 0 } };
