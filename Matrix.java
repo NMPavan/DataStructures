@@ -1,5 +1,7 @@
 package datastructures;
 
+import java.util.*;
+
 public class Matrix {
 
 	static void printList(int arr[][], int n) {
@@ -132,6 +134,59 @@ public class Matrix {
 
 	}
 
+	static boolean search(int matrix[][], int n, int m, int x) {
+		// code here
+		int i = 0, j = m - 1;
+
+		while (i < n && j >= 0) {
+
+			if (matrix[i][j] == x) {
+				return true;
+			}
+
+			if (matrix[i][j] > x) {
+				j--;
+			} else {
+				i++;
+			}
+		}
+
+		return false;
+	}
+
+	static ArrayList<Integer> spirallyTraverse(int mat[][], int r, int c) {
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		int top = 0, bottom = r - 1, right = c - 1, left = 0;
+
+		while (top <= bottom && left <= right) {
+
+			for (int i = left; i <= right; i++) {
+				arr.add(mat[top][i]);
+			}
+			top++;
+
+			for (int j = top; j <= bottom; j++) {
+				arr.add(mat[j][right]);
+			}
+			right--;
+
+			if (top <= bottom) {
+				for (int k = right; k >= left; k--) {
+					arr.add(mat[bottom][k]);
+				}
+			}
+			bottom--;
+
+			if (left <= right) {
+				for (int l = bottom; l >= top; l--) {
+					arr.add(mat[l][left]);
+				}
+			}
+			left++;
+		}
+		return arr;
+	}
+
 	public static void main(String[] args) {
 		int arr[][] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 
@@ -152,15 +207,21 @@ public class Matrix {
 		// Matrix Boundry Traversal
 		matrixBoundryTraversal(arr);
 
-		System.out.println("****");
+		System.out.println("");
 
 		// Transpose of Matrix
 		transpose(arr);
 
-		System.out.println("%%%%");
+		System.out.println("");
 
 		// Rotate an matrix by 90 degree
 		rotateBy90(arr);
+
+		// Search in a row-column sorted Matrix
+		System.out.println(search(arr, 3, 3, 9));
+
+		// Spriral matrix
+		System.out.println(spirallyTraverse(arr, 3, 3));
 
 	}
 
