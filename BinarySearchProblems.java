@@ -97,6 +97,56 @@ public class BinarySearchProblems {
 
 	}
 
+	static int sqreOfNumber(int x) {
+//
+//		int i=1;
+//		while(i*i <=x)
+//			i++;
+//		
+//		return i-1;
+//
+		// 10 --> 1 to 10 --> 1+ 10/ 2 = 5 --> 5*5 = 25 -> then ele -> left half
+		// so high = mid -1
+		// 1 to 5 ==> 3 is mid then 3 * 3 --> 10 < 9 -> F so goes to else -> ans = mid
+		// 3,4 --> then both at 4 --> high = 4-1 = 3-> next itr -> 4<=3 breaks the loop
+		// ans = 3 finally
+		int low = 1, high = x, ans = -1;
+
+		while (low <= high) {
+			int mid = (low + high) / 2;
+			int mSq = mid * mid;
+
+			if (mSq == x)
+				return mid;
+			else if (x < mSq) {
+				high = mid - 1;
+			}
+
+			else {
+				low = mid + 1;
+				ans = mid;
+			}
+
+		}
+
+		return ans;
+	}
+
+	static int search(int arr[], int x) {
+
+		if (arr[0] == x)
+			return 0;
+		int i = 1;
+
+		while (arr[i] < x)
+			i = i * 2;
+
+		if (arr[i] == x)
+			return i;
+
+		return recursiveBS(arr, i / 2 + 1, i - 1, x);
+	}
+
 	public static void main(String[] args) {
 		int arr[] = { 10, 20, 30, 40, 50, 60 }, n = 6;
 
@@ -123,6 +173,14 @@ public class BinarySearchProblems {
 		int d = 1;
 		int n2 = 5;
 		System.out.println(countnoOf1(arr2, n2, d));
+
+		// squareRoot of given input
+		System.out.println(sqreOfNumber(10));
+
+		// search in infinity matrix
+		int arr4[] = { 1, 2, 3, 40, 50 };
+		int x4 = 40;
+		System.out.println(search(arr4, x4));
 
 	}
 }
