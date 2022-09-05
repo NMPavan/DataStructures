@@ -1,0 +1,151 @@
+package demo;
+
+import java.util.*;
+import java.lang.*;
+
+public class demo {
+
+	static int i = 2;
+
+	// fact of number
+	static int fact(int num) {
+		if (num == 1 || num == 0)
+			return 1;
+
+		int res = 1;
+
+		for (int j = num; j > 0; j--) {
+			res = res * j;
+		}
+
+		return res;
+		// recursion
+		// return num * fact(num - 1);
+	}
+
+	// polindrome
+	static boolean ispolindrome(String str) {
+		if (str.isEmpty())
+			return true;
+
+		StringBuffer str1 = new StringBuffer(str);
+
+		str1 = str1.reverse();
+
+		String s = str1.toString();
+
+		if (str.equals(s))
+			return true;
+		return false;
+
+	}
+
+	// prime
+	static void isprime(int num) {
+		boolean flag = false;
+		for (int i = 2; i <= num / 2; ++i) {
+			if (num % i == 0) {
+				flag = true;
+				break;
+			}
+		}
+		if (!flag)
+			System.out.println(num + " is a prime number.");
+		else
+			System.out.println(num + " is not a prime number.");
+	}
+
+	// armstrong
+	static void armstrong(int number) {
+		int originalNumber, remainder, result = 0;
+		originalNumber = number;
+		while (originalNumber != 0) {
+			remainder = originalNumber % 10;
+			result += Math.pow(remainder, 3);
+			originalNumber /= 10;
+		}
+		if (result == number)
+			System.out.println(number + " is an Armstrong number.");
+		else
+			System.out.println(number + " is not an Armstrong number.");
+	}
+
+	// fibnochi
+	static int fibnocci(int num) {
+		if (num <= 1)
+			return num;
+		return fibnocci(num - 1) + fibnocci(num - 2);
+	}
+
+	static int fib(int n) {
+		int f[] = new int[n + 2];
+		int i;
+		
+		//0 1 1 2 3 5 8 13 21 34 55
+
+		/* 0th and 1st number of the series are 0 and 1 */
+		f[0] = 0;
+		f[1] = 1;
+		for (i = 2; i <=n; i++) {
+			f[i] = f[i - 1] + f[i - 2];
+		}
+
+		return f[n];
+	}
+
+//	public static boolean isPrime(int n)
+//	{
+//	    
+//	    // Corner cases
+//	    if (n == 0 || n == 1)
+//	    {
+//	        return false;
+//	    }
+//	   
+//	    // Checking Prime
+//	    if (n == i)
+//	        return true;
+//	         
+//	    // Base cases
+//	    if (n % i == 0)
+//	    {
+//	        return false;
+//	    }
+//	    i++;
+//	    return isPrime(n);
+//	}
+
+	static boolean isPrime(int n) {
+
+		// Check if number is less than
+		// equal to 1
+		if (n <= 1)
+			return false;
+
+		// Check if number is 2
+		else if (n == 2)
+			return true;
+
+		// Check if n is a multiple of 2
+		else if (n % 2 == 0)
+			return false;
+
+		// If not, then just check the odds
+		for (int i = 3; i <= Math.sqrt(n); i += 2) {
+			if (n % i == 0)
+				return false;
+		}
+		return true;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(fact(5));
+		System.out.println(ispolindrome("malayalam"));
+		isprime(7);
+		armstrong(372);
+		System.out.println(fib(10));
+		
+		//0 1 1 2 3 5 8 13 21 34 55
+	}
+
+}
